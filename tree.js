@@ -1,11 +1,9 @@
 const fsp = require('fs/promises');
 const path = require('path');
 
-
-
 async function createFileTree(rootFullPath) {
   const root = {
-    relPath: '\\',
+    relPath: '/',
     children: []
   };
   async function createFileTreeRecursive(tree, rootFullPath) {
@@ -38,7 +36,7 @@ async function createFileTree(rootFullPath) {
 }
 
 async function main() {
-  testDir = 'c:\\users\\andy\\dev\\'
+  testDir = '/'
   fileTree = await createFileTree(testDir);
   fsp.writeFile(path.join(__dirname, 'fileTreeJSON.json'), fileTree)
 }
